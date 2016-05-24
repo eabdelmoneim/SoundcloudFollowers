@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "project-5079654937465698252",
+  "private_key_id": "b2ef1c0518a50de21ad0a004573d1c5430720963",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQCMCNxFsMRKWitP\nS+utMFECPB+7iTFz9RCux+pWHKDhw8aWBWCTXxo1g0IxKBT/Sv6OBlTXuY1NwzT7\nyahy6YQTCxMbANYRb6MQNdbKhASwkD7e5GVF/V86es3fNVlhmRegEb80JhYa/fqY\npjAX1xv+eWZkOAegeU4+j+c3piT2kEusqBnBeUP9B7stHRvjemGVlZy9RPvw1Bxi\nESisEg/YPJxR7knFw5AWMZcO9p/az8XkbsU0TvqpGRp4USvlcg2TqTuhVIXSMGCc\n/qHT3txMOzSgKp5G8PF3t7cvhzLbkyU3tSC3Ag5QYSD++s9OAQHk0XvdPn8G+ii4\nyMkyti3FAgMBAAECggEAKudADX4F9b3AjS/2if5Go4emNT/oTd2kedg4PJ/Szri7\nrBUDrMMzdXe8nPDp1fm1GfBoqBtqZovLPOVg3awb0fXPqbNM4tSwQfQs1akzAqF/\nEa0qNhJVzcX4M03WD6fm7Bzj1udgWG6+C2zHSVaXdhTdwRDFjW39Af/22D7oDj5d\nM/2Z+URWpdI7sumR/r+9am8P47wziETEly/6F01/SvA0eFe7BMWz0ooDih2gESrr\nrWvs5sBgtbQhpeT+tT5Cb/Y5jwyRb3DUnGzPQmb7c0jYv3r0WlCak+5XlsWjqV6e\ne0pQpI6ysN5rvXwdIOne8F23r5J5P8q/8ZBz+NrQdQKBgQDHcTojNVCWcvq+0DF9\n+qwIHcizv5geA8xX7CDwqjZeKap89m4F5zwIo7z058rFIeY3ThaVNFJTqsdfkXYn\n9Vv6Z/gyLmUBwo5GPHTfb/bu5A05azZt4RN1sc4esdHhLd8wllURqNQo8fvheyAj\nFvlSc0M7BB6mxGzBnFgsq9LBDwKBgQCzvtr1z0gh4K+gVY92r/v6dJgcGBQfcLew\nURwzlF6ZipJ8rYRT4FstorPLS2DQZdK2K6ka95gXDImBWX35POP1yu0UwSCllGrV\nKza5lx5BZe6QbKksHFAkcan0oZh5TeYJvrO1xXN0cB23AYD1W/p9x9zD0k0iPiQY\nGPrMRTe76wKBgDh8H+wS0HUbsVpTWoEEeq59yPbnf2yYxMnt7VJb0rQOduOXY4e2\nerEztnNiJnJ4bFwjeI/fVqWti3PMnbspaVhdE9UagK7j7CmGO8+ARV5ZJkmpzKuI\nAFvn9KmK0RdGR5zaJtOujg/eoOi2V164xfoM/PB89TVkEi0vW2WjcDgPAoGBAIum\njyxH/b0Eeq9RioMmO9ndWIkLVCcRRkYg3o5cihs1BJcFoTghqfWM4a/jQrbnRYzv\n4xTmpS3TOcpbo3pPirVfEk/7tMewxkgUqRIMjR82eOGQ6ucwoDuQbAF6w6ILmdyc\nY7eoTwl6SjvzWSRIcBflfmpOLEuciCKI1eJ7LNA9AoGBAKgGENX2mzhe/vcmRvrW\nWN1t89TPW3iKSkyFuMwlsUusVsqOug+Rd/6QUH7kj3bEosxy/q5JKh+xHqV2GD3d\nn0DQPidP12LEOythe51PkTGfS1Lo6qcQWPq+oc77V9sFbpW1VuUm2w/mUOc/w4Rl\n2/0R3XWYlX0zjBPig50VBxgp\n-----END PRIVATE KEY-----\n",
+  "client_email": "soundcloud@project-5079654937465698252.iam.gserviceaccount.com",
+  "client_id": "103075341384569449484",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://accounts.google.com/o/oauth2/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/soundcloud%40project-5079654937465698252.iam.gserviceaccount.com"
+}
