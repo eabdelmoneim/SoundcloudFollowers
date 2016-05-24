@@ -1,5 +1,9 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+ h1= title
+ form(name="soundcloud-user",action="/login", method="post")
+    div.input
+      span.label Your Soundcloud login  
+      input(type="text", name="scLogin")
+      input(type="submit", value="go")
