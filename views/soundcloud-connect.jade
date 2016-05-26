@@ -1,0 +1,9 @@
+extends layout
+
+block content
+ h1 Welcome to Soundcloud Analyzer
+ form(name="soundcloud-user",action="/process", method="post")
+    div.input
+      span.label Soundcloud Profile URL  
+      input(type="text", name="scProfileURL")
+      input(type="submit", value="go")
