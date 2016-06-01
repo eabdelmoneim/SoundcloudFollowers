@@ -4,12 +4,32 @@ var url = require('url');
 
 var router = express.Router();
 var apitoken = null;
+
 var client_id = null;
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Soundcloud Analyzer' });
+	
+	res.render('index', { title: 'Soundcloud Analyzer' });
 });
+
+// helper function that will query firebase to see if a soundcloud
+// api token already exists
+function getToken(firebase, callback) {
+	firebase.database().ref('token/').once('value', function(snapshot) {
+		if (snapshot.val() === null) {
+			callback(null);
+		} else {
+			apitoken = snapshot.val().apitoken;
+			console.log('found existing apitoken: ' + apitoken);
+			callback(apitoken);
+		}
+	}, function(err) {
+		console.error(err);
+		callback(null);
+	});
+}
+
 
 // helper function to initialize soundcloud connection
 function initSoundcloud(token) {
@@ -49,23 +69,21 @@ router.post('/login', function(req,res,next){
 	
 	// if token exists in the DB then use it
 	// else connect to Soundcloud for authorization
-	firebase.database().ref('token/').once('value', function(snapshot){
-		apitoken = snapshot.val().apitoken;
-		console.log('found existing apitoken: ' + apitoken); 		
+	getToken(firebase, function(apitoken) {
+		console.log("got token " + apitoken);
+		// if we already have an api token we can use it
+		// else we need to initialize using soundcloud authorization callback
+		if(apitoken !== null) {
+			res.render('soundcloud-connect');
+			return;
+		} else {
+			var connectURL = initSoundcloud();
+			console.log('connect URL: ' + connectURL);
+		
+			res.writeHead(301,{'Location': connectURL});
+			res.end();
+		}
 	});
-	
-	// if we already have an api token we can use it
-	// else we need to initialize using soundcloud authorization callback
-	if(apitoken !== null) {
-		res.render('soundcloud-connect');
-		return;
-	} else {
-		var connectURL = initSoundcloud();
-		console.log('connect URL: ' + connectURL);
-	
-		res.writeHead(301,{'Location': connectURL});
-		res.end();
-	}
 	
 });
 
@@ -76,7 +94,7 @@ router.get('/callback', function(req,res,next){
 	console.log('received token ' + token);
 	
 	var firebase = req.app.get('firebase');
-		
+	
 	firebase.database().ref('token/').set({
 		apitoken: token,
 		timestamp: Date.now()
@@ -117,17 +135,21 @@ router.post('/process', function(req, res, next){
 				if(e) {
 					console.log('error: ' + e);
 				} else {
+					
 					// write user object to database
 					var firebase = req.app.get('firebase');
 					
 					firebase.database().ref('users/').set(userData);
 					console.log('wrote user info to db for user ' + userData.username);
+					
+					res.render('soundcloud-user', {json: userData});
 				}
 			});
 		}
 	});
 	
-	res.status(200).send("ready to process profile URL: " + scProfileURL);
+
+	// res.status(200).send("ready to process profile URL: " + scProfileURL);
 });
 
 module.exports = router;

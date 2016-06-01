@@ -1,0 +1,10 @@
+extends layout
+
+block content
+ h1 Soundcloud User Data For !{json.username}
+ p ---
+    each val, key in json
+     if key=="followers_count"
+      p #{key}: #[a(href="followers/") #{val}]
+     else
+      p #{key}: #{val}
