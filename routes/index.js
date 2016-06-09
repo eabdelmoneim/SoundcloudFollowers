@@ -147,9 +147,61 @@ router.post('/process', function(req, res, next){
 			});
 		}
 	});
-	
+});
 
-	// res.status(200).send("ready to process profile URL: " + scProfileURL);
+function processFavorites(firebase, followingID, followerID) {
+	
+	// get favorited tracks for the user from SC
+	SC.get('/users/' + followerID + '/favorites', function(err, favoriteList){
+		if(err) {
+			throw err;
+		} else {
+			console.log('got favorites for user ' + followerID);
+			
+			// save favorites to the DB
+			var numFavorites = favoriteList.length;
+			for(var j=0; j<numFavorites; j++) {
+				
+				var fav = favoriteList[j];
+				fav.followingID = followingID;
+				fav.followerID = followerID;
+				firebase.database().ref('favorites/' + fav.followerID).set(fav);
+			}
+			
+		}
+	});
+}
+
+// route to handle getting followers information for a user
+router.get('/followers', function(req,res,next){
+	
+	// user ID whose followers we want to get is in the request
+	var followingID = req.query.userID;
+	
+	var firebase = req.app.get('firebase');
+	
+	SC.get('/users/' + followingID + '/followers', function(e, followerList){
+		if(e) {
+			console.log('error getting SC followers: ' + e);
+		} else {
+			console.log('follower list for user ' + followingID + ': ' + followerList);
+			
+			// loop over followers
+			var numFollowers = followerList.collection.length;
+			for(var i=0; i<numFollowers; i++) {
+				var follower = followerList.collection[i];
+				
+				// save follower to DB
+				follower.followingID = followingID;
+				firebase.database().ref('followers/' + follower.id).set(follower);
+				
+				processFavorites(firebase, followingID, follower.id);
+			}
+		}
+	});
+	
+	res.render('soundcloud-finished');
+	
 });
 
 module.exports = router;

@@ -5,6 +5,6 @@ block content
  p ---
     each val, key in json
      if key=="followers_count"
-      p #{key}: #[a(href="followers/") #{val}]
+      p #{key}: #[a(href="followers/?userID=" + json.id) #{val}]
      else
       p #{key}: #{val}
